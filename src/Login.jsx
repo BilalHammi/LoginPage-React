@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Googlebutton from './Googlebutton';
-import '/src/googleIcon.png';
+// import '/src/googleIcon.png';
 import './index.css'
 
 export const Login = () => {

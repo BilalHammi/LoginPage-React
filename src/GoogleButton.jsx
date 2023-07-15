@@ -1,5 +1,5 @@
 import './index.css'
-import '/src/googleIcon.png';
+// import 'assets/googleIcon.png';
 
 export default function Googlebutton() {
     return (
