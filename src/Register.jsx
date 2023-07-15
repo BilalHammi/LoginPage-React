@@ -24,13 +24,12 @@ export const Register = () => {
                   <input type="submit" name='Submit' placeholder='Submit' value="Submit" className='mt-10 w-3/4 rounded-lg bg-gray-600 text-center py-2 font-bold border-2 border-black hover:bg-black hover:text-white' />
                 </div>
               </div>
-              <div className="flex justify-center mt-3 text-white font-bold">
+              <div className="flex justify-center mt-5 text-white font-bold">
                 <div className='flex flex-row'>
                   <p className="pr-2">See password?</p>
                   <input type="checkbox" id="Check1" className='' />
                 </div>
               </div>
-              <p className="mt-3 underline underline-offset-2 flex justify-center text-white font-bold">Forgot Password?</p>
               <div>
                 <p className="mt-4 flex justify-center text-white font-bold">Have a account
                   <Link to="/" className="text-blue-400 font-bold ml-2 underline underline-offset-2">Click here!</Link></p>
