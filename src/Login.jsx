@@ -19,7 +19,7 @@ export const Login = () => {
 
           <div className='w-[27rem] h-[31rem] bg-slate-500 rounded-lg'>
 
-            <form action="App.jsx" method="post" className='flex flex-col'>
+            <form action="Login.jsx" method="post" className='flex flex-col'>
               <div>
                 <div className='flex justify-center'>
                   <input type="text" name='E-mail' placeholder='E-mail' className='mt-14 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required />

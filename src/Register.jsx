@@ -1,7 +1,9 @@
 import './index.css'
 import { Link } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Googlebutton from './Googlebutton';
 import './index.css'
+import { useState } from 'react';
 
 export const Register = () => {
   const show = () => {
@@ -12,6 +14,25 @@ export const Register = () => {
       x.type = "password";
     }
   }
+
+  const auth = getAuth();
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const SignUp = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+        alert("You have created your account with success!")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode);
+        console.log(errorMessage);
+      });
+  };
   return (
     <>
       <div className='container mx-auto flex justify-center'>
@@ -20,16 +41,16 @@ export const Register = () => {
 
           <div className='w-[27rem] h-[31rem] bg-slate-500 rounded-lg'>
 
-            <form action="App.jsx" method="post" className='flex flex-col'>
+            <form className='flex flex-col'>
               <div>
                 <div className='flex justify-center'>
-                  <input type="text" name='E-mail' placeholder='E-mail' className='mt-14 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required />
+                  <input type="text" name='E-mail' placeholder='E-mail' className='mt-14 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required onChange={(e) => setemail(e.target.value)} />
                 </div>
                 <div className='flex justify-center'>
-                  <input type="password" name='password' id='password' placeholder='Password' className='mt-12 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required />
+                  <input type="password" name='password' id='password' placeholder='Password' className='mt-12 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required onChange={(e) => setpassword(e.target.value)} />
                 </div>
                 <div className='flex justify-center'>
-                  <input type="submit" name='Submit' placeholder='Submit' value="Submit" className='mt-10 w-3/4 rounded-lg bg-gray-600 text-center py-2 font-bold border-2 border-black hover:bg-black hover:text-white' />
+                  <input type="submit" name='Submit' placeholder='Submit' value="Submit" className='mt-10 w-3/4 rounded-lg bg-gray-600 text-center py-2 font-bold border-2 border-black hover:bg-black hover:text-white' onClick={SignUp} />
                 </div>
               </div>
               <div className="flex justify-center mt-5 text-white font-bold">
