@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Googlebutton from './Googlebutton';
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -13,16 +13,18 @@ export const Login = () => {
       x.type = "password";
     }
   }
+  const navigate = useNavigate();
   const auth = getAuth();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+
   const SignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
         const user = userCredential.user;
         console.log(user);
         alert("You have Logged into your account!")
+        navigate("/home");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -45,7 +47,7 @@ export const Login = () => {
                   <input type="text" name='E-mail' placeholder='E-mail' className='mt-14 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required onChange={(e) => setemail(e.target.value)}/>
                 </div>
                 <div className='flex justify-center'>
-                  <input type="password" name='password' id="password" placeholder='Password' className='mt-12 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required onChange={(e) => setpassword(e.target.value)} />
+                  <input type="password" name='password' id="password" placeholder='Password' className='mt-12 w-3/4 rounded-lg bg-white text-center py-2 font-bold border-2 border-black' required onChange={(e) => setpassword(e.target.value)}/>
                 </div>
                 <div className='flex justify-center'>
                   <input type="submit" value="Submit" className='mt-10 w-3/4 rounded-lg bg-gray-600 text-center py-2 font-bold border-2 border-black hover:bg-black hover:text-white' onClick={SignIn} />

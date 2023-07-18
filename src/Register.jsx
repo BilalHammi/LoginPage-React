@@ -1,4 +1,3 @@
-import './index.css'
 import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Googlebutton from './Googlebutton';
