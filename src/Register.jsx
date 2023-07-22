@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Googlebutton from './Googlebutton';
 import './index.css'
@@ -13,7 +13,7 @@ export const Register = () => {
       x.type = "password";
     }
   }
-
+  const navigate = useNavigate();
   const auth = getAuth();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -23,6 +23,7 @@ export const Register = () => {
         // Signed in 
         const user = userCredential.user;
         console.log(user);
+        navigate("/home");
         alert("You have created your account with success!")
       })
       .catch((error) => {
